@@ -69,7 +69,7 @@ foreach ( $each in $dismOut){
 Write-Host  "All installed third-party drivers"
 $collection | sort Vendor | ft
 
-$input = Read-Host "Which driver(s) would you like to remove? Select rows comma seperated (ex '10, 2, 4, 22...') "
+$input = Read-Host "Which driver(s) would you like to remove? Select rows, comma seperated (ex '10, 2, 4, 22...') "
 
 $toDelete = @()
 foreach ( $each in  $input.Split(',')){
