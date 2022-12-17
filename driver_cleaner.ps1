@@ -11,58 +11,58 @@ foreach ( $each in $dismOut){
 	# There are seven lines and a blanks line at the end, so 8 switch statements are required.
 	switch ($filterNext) {
 		'pubName'	{
-						$pubName = $lineValue.Trim()
-						$filterNext = 'ogFlName'
-						break
-					}
+					$pubName = $lineValue.Trim()
+					$filterNext = 'ogFlName'
+					break
+				}
 		'ogFlName'	{
-						$ogFileName =  $lineValue.Trim()
-						$filterNext = 'inbox'
-						break
-					}
+					$ogFileName =  $lineValue.Trim()
+					$filterNext = 'inbox'
+					break
+				}
 		'inbox'		{
-						$inbox = $lineValue.Trim()
-						$filterNext = 'className'
-						break
-					}
+					$inbox = $lineValue.Trim()
+					$filterNext = 'className'
+					break
+				}
 		'className'	{
-						$className =  $lineValue.Trim()
-						$filterNext = 'provider'
-						break
-					}
+					$className =  $lineValue.Trim()
+					$filterNext = 'provider'
+					break
+				}
 		'provider'	{
-						$provider =  $lineValue.Trim()
-						$filterNext = 'date'
-						break
-					}
+					$provider =  $lineValue.Trim()
+					$filterNext = 'date'
+					break
+				}
 		'date'		{
-						$date =  $lineValue.Trim()
-						$filterNext = 'version'
-						break
-					}
+					$date =  $lineValue.Trim()
+					$filterNext = 'version'
+					break
+				}
 		'version'	{	
-						$version =  $lineValue.Trim()
-						$filterNext = 'reset'
-						$sort = [ordered]@{
-							'Row' = $count
-							'Vendor' = $provider
-							'Type' = $className 
-							'FileName' = $ogFileName
-							'Name' = $pubName
-							'Date' = $date
-							'Version' = $version
-							'Inbox' = $inbox
-						}
-						$obj = New-Object -TypeName PSObject -Property $sort
-						$collection += $obj						
-						$count++
-						break
+					$version =  $lineValue.Trim()
+					$filterNext = 'reset'
+					$sort = [ordered]@{
+						'Row' = $count
+						'Vendor' = $provider
+						'Type' = $className 
+						'FileName' = $ogFileName
+						'Name' = $pubName
+						'Date' = $date
+						'Version' = $version
+						'Inbox' = $inbox
 					}
+					$obj = New-Object -TypeName PSObject -Property $sort
+					$collection += $obj						
+					$count++
+					break
+				}
 		'reset'		{
-						$ogFileName =  $lineValue
-						$filterNext = 'pubName'
-						break
-					}					
+					$ogFileName =  $lineValue
+					$filterNext = 'pubName'
+					break
+				}					
 	}
 }
 
